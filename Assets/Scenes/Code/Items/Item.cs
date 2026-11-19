@@ -3,31 +3,39 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    protected string itemName = "DefaultName";
+    public string itemName = "DefaultName";
 
     [SerializeField]
-    protected string itemDescription = "Default Description Blah Blah Blah";
+    public string itemDescription = "Default Description Blah Blah Blah";
     
     [SerializeField]
-    protected float weight = 0f; // KG
+    public float weight = 0f; // KG
     
     [SerializeField]
-    protected int value = 1;
+    public int value = 1;
 
     // Destroy 
     // Maybe trigger events. 
 
     // Subtypes 
-    // Consumables
-    // Armor/Weapons
+
+    // Junk - Default Item
+    // Consumables - Subclass.
+    // Wearable - Subclass that has more subclasses
+    //  - Armor - subclass of wearable. 
+    //  - Weapons - subclass of wearable. 
     // 
+
+    public virtual float CalcWeight() {
+        return weight;
+    }
 
     public void Initialize() {
         itemName = "New Generated Item";
         itemDescription = "Random Description";
     }
 
-    public void Initialize(string newName, string newDesc) {
+    public virtual void Initialize(string newName, string newDesc) {
         itemName = newName;
         itemDescription = newDesc;
     }
